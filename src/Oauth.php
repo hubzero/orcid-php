@@ -129,7 +129,6 @@ class Oauth
      * asdfsa
      *
      * @return void
-     * @author 
      **/
     public function tester()
     {
