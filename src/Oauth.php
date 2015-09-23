@@ -126,6 +126,17 @@ class Oauth
     }
 
     /**
+     * asdfsa
+     *
+     * @return void
+     * @author 
+     **/
+    public function tester()
+    {
+        return false;
+    }
+
+    /**
      * Sets the oauth instance to use the public api (when needed)
      *
      * @return  $this
