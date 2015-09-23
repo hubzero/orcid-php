@@ -26,7 +26,8 @@ class Curl
      **/
     public function __construct()
     {
-        $this->initialize();
+        $this->initialize(); asdf
+        			test;
     }
 
     /**
