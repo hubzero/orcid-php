@@ -1,6 +1,16 @@
 language: php
+
 php:
   - 5.4
   - 5.5
   - 5.6
-script: phpunit tests
+
+before_install:
+  - composer self-update
+
+install: composer install
+
+script:
+  - vender/bin/phpunit
+  - vender/bin/phpcs --standard=PSR2 src/
+  - find src/ -type f -name *.php -exec php -l {} \;
