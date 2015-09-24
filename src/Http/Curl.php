@@ -45,6 +45,8 @@ class Curl
     /**
      * Sets a generic option on the curl resource
      *
+     * @param   int    $opt    The curl option to set
+     * @param   mixed  $value  The curl option value to use
      * @return  $this
      **/
     public function setOpt($opt, $value)
