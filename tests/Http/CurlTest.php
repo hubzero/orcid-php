@@ -59,8 +59,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
      **/
     public function testNewCurlCallsInitialize()
     {
-        $call = function()
-        {
+        $call = function() {
             $curl = new Curl;
         };
 
@@ -75,8 +74,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
      **/
     public function testCurlResetCallsClose()
     {
-        $call = function()
-        {
+        $call = function() {
             $curl = new Curl;
             $curl->reset();
         };
@@ -92,8 +90,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
      **/
     public function testCurlExecutes()
     {
-        $call = function()
-        {
+        $call = function() {
             $curl = new Curl;
             $curl->execute();
         };
@@ -109,8 +106,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
      **/
     public function testSetOptCallsSetOptWithParameter()
     {
-        $call = function()
-        {
+        $call = function() {
             $curl = new Curl;
             $curl->setOpt(CURLOPT_URL, 'http://hubzero.org');
         };
