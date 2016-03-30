@@ -37,6 +37,13 @@ class Oauth
     private $level = 'pub';
 
     /**
+     * The ORCID environment type
+     *
+     * @var  string
+     **/
+    private $environment = '';
+
+    /**
      * The oauth client ID
      *
      * @var  string
@@ -145,6 +152,30 @@ class Oauth
     public function useMembersApi()
     {
         $this->level = 'api';
+
+        return $this;
+    }
+
+    /**
+     * Sets the oauth instance to use the production environment
+     *
+     * @return  $this
+     **/
+    public function useProductionEnvironment()
+    {
+        $this->environment = '';
+
+        return $this;
+    }
+
+    /**
+     * Sets the oauth instance to use the sandbox environment
+     *
+     * @return  $this
+     **/
+    public function useSandboxEnvironment()
+    {
+        $this->environment = 'sandbox';
 
         return $this;
     }
@@ -351,7 +382,9 @@ class Oauth
         }
 
         // Start building url (enpoint is the same for public and member APIs)
-        $url  = 'https://' . self::HOSTNAME . '/' . self::AUTHORIZE;
+        $url  = 'https://';
+        $url .= (!empty($this->environment)) ? $this->environment . '.' : '';
+        $url .= self::HOSTNAME . '/' . self::AUTHORIZE;
         $url .= '?client_id='    . $this->clientId;
         $url .= '&scope='        . $this->scope;
         $url .= '&redirect_uri=' . urlencode($this->redirectUri);
@@ -400,7 +433,12 @@ class Oauth
             'grant_type'    => 'authorization_code'
         ];
 
-        $this->http->setUrl('https://' . $this->level . '.' . self::HOSTNAME . '/' . self::TOKEN)
+        $url  = 'https://';
+        $url .= $this->level . '.';
+        $url .= (!empty($this->environment)) ? $this->environment . '.' : '';
+        $url .= self::HOSTNAME . '/' . self::TOKEN;
+
+        $this->http->setUrl($url)
                    ->setPostFields($fields)
                    ->setHeader(['Accept' => 'application/json']);
 
@@ -472,6 +510,7 @@ class Oauth
     {
         $url  = ($this->level == 'pub') ? 'http://' : 'https://';
         $url .= $this->level . '.';
+        $url .= (!empty($this->environment)) ? $this->environment . '.' : '';
         $url .= self::HOSTNAME;
         $url .= '/v1.2/';
         $url .= $orcid ?: $this->getOrcid();

@@ -33,12 +33,47 @@ class OauthTest extends \PHPUnit_Framework_TestCase
     public function testGetBasicAuthorizationUrl()
     {
         $oauth = $this->oauth()
+                      ->useProductionEnvironment()
                       ->setClientId('1234')
                       ->setScope('/authorize')
                       ->setRedirectUri('here');
 
         $this->assertEquals(
             'https://orcid.org/oauth/authorize?client_id=1234&scope=/authorize&redirect_uri=here&response_type=code',
+            $oauth->getAuthorizationUrl(),
+            'Failed to fetch a properly formatted authorization URL'
+        );
+
+        $oauth->useMembersApi();
+        $this->assertEquals(
+            'https://orcid.org/oauth/authorize?client_id=1234&scope=/authorize&redirect_uri=here&response_type=code',
+            $oauth->getAuthorizationUrl(),
+            'Failed to fetch a properly formatted authorization URL'
+        );
+    }
+
+    /**
+     * Test to make sure we can get a basic authorization url for the sandbox environment
+     *
+     * @return  void
+     **/
+    public function testGetBasicSandboxAuthorizationUrl()
+    {
+        $oauth = $this->oauth()
+                      ->useSandboxEnvironment()
+                      ->setClientId('1234')
+                      ->setScope('/authorize')
+                      ->setRedirectUri('here');
+
+        $this->assertEquals(
+            'https://sandbox.orcid.org/oauth/authorize?client_id=1234&scope=/authorize&redirect_uri=here&response_type=code',
+            $oauth->getAuthorizationUrl(),
+            'Failed to fetch a properly formatted authorization URL'
+        );
+
+        $oauth->useMembersApi();
+        $this->assertEquals(
+            'https://sandbox.orcid.org/oauth/authorize?client_id=1234&scope=/authorize&redirect_uri=here&response_type=code',
             $oauth->getAuthorizationUrl(),
             'Failed to fetch a properly formatted authorization URL'
         );
@@ -229,6 +264,104 @@ class OauthTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test to make sure we build the appropriate production url for public api token requests
+     *
+     * @return  void
+     **/
+    public function testBuildPublicProductionTokenUrl()
+    {
+        $http = m::mock('Orcid\Http\Curl');
+        $http->shouldReceive('setPostFields', 'setHeader')->andReturn(m::self())
+             ->getMock()
+             ->shouldReceive('setUrl')->once()->with('https://pub.orcid.org/oauth/token')->andReturn(m::self());
+
+        // Tell the curl method to return an empty ORCID iD
+        $response = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Fixtures' . DIRECTORY_SEPARATOR . 'response-success.json');
+        $http->shouldReceive('execute')->andReturn($response);
+
+        $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
+        $oauth->useProductionEnvironment()
+              ->setClientId('1234')
+              ->setClientSecret('12345')
+              ->setRedirectUri('here')
+              ->authenticate('123456');
+    }
+
+    /**
+     * Test to make sure we build the appropriate production url for member api token requests
+     *
+     * @return  void
+     **/
+    public function testBuildMemberProductionTokenUrl()
+    {
+        $http = m::mock('Orcid\Http\Curl');
+        $http->shouldReceive('setPostFields', 'setHeader')->andReturn(m::self())
+             ->getMock()
+             ->shouldReceive('setUrl')->once()->with('https://api.orcid.org/oauth/token')->andReturn(m::self());
+
+        // Tell the curl method to return an empty ORCID iD
+        $response = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Fixtures' . DIRECTORY_SEPARATOR . 'response-success.json');
+        $http->shouldReceive('execute')->andReturn($response);
+
+        $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
+        $oauth->useProductionEnvironment()
+              ->useMembersApi()
+              ->setClientId('1234')
+              ->setClientSecret('12345')
+              ->setRedirectUri('here')
+              ->authenticate('123456');
+    }
+
+    /**
+     * Test to make sure we build the appropriate sandbox url for public api token requests
+     *
+     * @return  void
+     **/
+    public function testBuildPublicSandboxTokenUrl()
+    {
+        $http = m::mock('Orcid\Http\Curl');
+        $http->shouldReceive('setPostFields', 'setHeader')->andReturn(m::self())
+             ->getMock()
+             ->shouldReceive('setUrl')->once()->with('https://pub.sandbox.orcid.org/oauth/token')->andReturn(m::self());
+
+        // Tell the curl method to return an empty ORCID iD
+        $response = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Fixtures' . DIRECTORY_SEPARATOR . 'response-success.json');
+        $http->shouldReceive('execute')->andReturn($response);
+
+        $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
+        $oauth->useSandboxEnvironment()
+              ->setClientId('1234')
+              ->setClientSecret('12345')
+              ->setRedirectUri('here')
+              ->authenticate('123456');
+    }
+
+    /**
+     * Test to make sure we build the appropriate sandbox url for member api token requests
+     *
+     * @return  void
+     **/
+    public function testBuildMemberSandboxTokenUrl()
+    {
+        $http = m::mock('Orcid\Http\Curl');
+        $http->shouldReceive('setPostFields', 'setHeader')->andReturn(m::self())
+             ->getMock()
+             ->shouldReceive('setUrl')->once()->with('https://api.sandbox.orcid.org/oauth/token')->andReturn(m::self());
+
+        // Tell the curl method to return an empty ORCID iD
+        $response = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Fixtures' . DIRECTORY_SEPARATOR . 'response-success.json');
+        $http->shouldReceive('execute')->andReturn($response);
+
+        $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
+        $oauth->useSandboxEnvironment()
+              ->useMembersApi()
+              ->setClientId('1234')
+              ->setClientSecret('12345')
+              ->setRedirectUri('here')
+              ->authenticate('123456');
+    }
+
+    /**
      * Test to make sure we can get a profile with the public api
      *
      * @return  void
@@ -273,7 +406,10 @@ class OauthTest extends \PHPUnit_Framework_TestCase
              ->shouldReceive('setUrl')->once()->with('https://api.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
-        $oauth->useMembersApi()->setAccessToken('123456789')->getProfile('0000-0000-0000-0000');
+        $oauth->useMembersApi()
+              ->useProductionEnvironment()
+              ->setAccessToken('123456789')
+              ->getProfile('0000-0000-0000-0000');
     }
 
     /**
@@ -291,5 +427,43 @@ class OauthTest extends \PHPUnit_Framework_TestCase
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
         $oauth->useMembersApi()->getProfile('0000-0000-0000-0000');
+    }
+
+    /**
+     * Test to make we use the proper sandbox url when fetching a sandbox profile
+     *
+     * @return  void
+     **/
+    public function testGetMemberSandboxProfileUsesProperUrl()
+    {
+        $http = m::mock('Orcid\Http\Curl');
+        $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
+             ->getMock()
+             ->shouldReceive('setUrl')->once()->with('https://api.sandbox.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+
+        $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
+        $oauth->useMembersApi()
+              ->useSandboxEnvironment()
+              ->setAccessToken('123456789')
+              ->getProfile('0000-0000-0000-0000');
+    }
+
+    /**
+     * Test to make we use the proper sandbox url when fetching a sandbox profile
+     *
+     * @return  void
+     **/
+    public function testGetPublicSandboxProfileUsesProperUrl()
+    {
+        $http = m::mock('Orcid\Http\Curl');
+        $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
+             ->getMock()
+             ->shouldReceive('setUrl')->once()->with('http://pub.sandbox.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+
+        $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
+        $oauth->usePublicApi()
+              ->useSandboxEnvironment()
+              ->setAccessToken('123456789')
+              ->getProfile('0000-0000-0000-0000');
     }
 }
