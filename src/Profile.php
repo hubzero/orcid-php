@@ -7,6 +7,8 @@
 
 namespace Orcid;
 
+use Orcid\Http\Curl;
+
 /**
  * ORCID profile API class
  **/
@@ -107,5 +109,40 @@ class Profile
         $details = $this->bio()->{'personal-details'};
 
         return $details->{'given-names'}->value . ' ' . $details->{'family-name'}->value;
+    }
+    
+     /**
+     * Saves the orcid-message xml provided to the correct scope
+     * @return  mixed - either false on failure or result content 
+     * If successful, this content will be orcid-message XML
+     **/
+    public function save($scope, $xml)
+    {
+        $endpoint = $this->oauth->getApiEndpoint($scope, $this->id());
+        $headers = [
+                'Content-Type'  => 'application/vnd.orcid+xml',
+                'Authorization' => 'Bearer ' . $this->id()->getAccessToken()
+            ];
+        
+        $orcid_msg = stripslashes($xml);
+        
+        /* We need to set up a tmp file in order 
+         * to do the HTTP PUT request properly
+         */
+        $tmp_file = tmpfile();
+        fwrite($tmp_file,$orcid_msg);
+        fseek($tmp_file,0);
+    
+        $c = new Curl;
+        $c->setUrl($endpoint);
+        $c->setOpt(CURLOPT_PUT, true);
+        $c->setOpt(CURLOPT_BINARYTRANSFER, true);
+        $c->setOpt(CURLOPT_RETURNTRANSFER, true);
+        $c->setOpt(CURLOPT_INFILE, $tmp_file);
+        $c->setOpt(CURLOPT_INFILESIZE, strlen($orcid_msg));
+        $c->setOpt(CURLOPT_VERBOSE, true);
+        $c->setHeader($headers);
+        $result = $c->execute();
+        return $result;
     }
 }
