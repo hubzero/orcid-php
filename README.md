@@ -1,11 +1,9 @@
 # orcid-php
-PHP Library for ORCID
-
-[![Build Status](https://travis-ci.org/hubzero/orcid-php.svg?branch=master)](https://travis-ci.org/hubzero/orcid-php)
-[![Coverage Status](https://coveralls.io/repos/hubzero/orcid-php/badge.svg?branch=master&service=github)](https://coveralls.io/github/hubzero/orcid-php?branch=master)
-[![StyleCI](https://styleci.io/repos/38449188/shield)](https://styleci.io/repos/38449188)
+PHP Library for ORCID, supporting v2 API connections
 
 This library was started to support the ORCID OAuth2 authentication workflow. It also supports basic profile access, but is a work in progress. More features are to come as needed by the developer or requested/contributed by other interested parties.
+
+This fork of the original [hubzero/orcid-php](https://github.com/hubzero/orcid-php) project adds support for switching between v1.2 and v2.0 APIs, and defaults to 2.0.
 
 ## Usage
 
@@ -47,10 +45,10 @@ $oauth->setClientId($clientId)
 // Authenticate the user
 $oauth->authenticate($_GET['code']);
 
-// Check for successful authentication
+// Check for successful authentication (v2.0)
 if ($oauth->isAuthenticated())
 {
-	$orcid = new Profile($oauth);
+	$orcid = new Profile($oauth, '2.0');
 
 	// Get ORCID iD
 	$id = $orcid->id();
@@ -68,13 +66,15 @@ To be implemented...
 As alluded to in the samples above, once successfully authenticated via OAuth, you can make subsequent requests to the other public/member APIs. For example:
 
 ```php
-$orcid = new Profile($oauth);
+$orcid = new Profile($oauth, '2.0');
 
 // Get ORCID profile details
 $id    = $orcid->id();
 $email = $orcid->email();
 $name  = $orcid->fullName();
 ```
+
+By default, a Profile object will be created usiong the v2.0 API data structure. Passing the value ``'1.2'`` as the second, version, parameter, will use the older, v1.2 API record structure.
 
 The profile class currently only supports a limited number of helper methods for directly accessing elements from the profile data. This will be expanded upon as needed. The raw JSON data from the profile output is available by calling the raw() method.
 

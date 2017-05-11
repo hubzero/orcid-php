@@ -2,6 +2,7 @@
 /**
  * @package   orcid-php
  * @author    Sam Wilson <samwilson@purdue.edu>
+ * @author    Darren Stephens <darren.stephesn@durham.ac.uk>
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  */
 
@@ -9,9 +10,9 @@ use Orcid\Oauth;
 use \Mockery as m;
 
 /**
- * Base ORCID oauth tests
+ * Base ORCID Oauth tests
  */
-class OauthTest extends \PHPUnit_Framework_TestCase
+class OauthTest extends m\Adapter\Phpunit\MockeryTestCase
 {
     /**
      * Gets a sample oauth object
@@ -23,6 +24,15 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
 
         return new Oauth($http);
+    }
+
+    /**
+     * Tear down mock after any tests that run it.
+     *
+     **/
+    protected function tearDown()
+    {
+        m::close();
     }
 
     /**
@@ -346,7 +356,10 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
         $http->shouldReceive('setPostFields', 'setHeader')->andReturn(m::self())
              ->getMock()
-             ->shouldReceive('setUrl')->once()->with('https://api.sandbox.orcid.org/oauth/token')->andReturn(m::self());
+             ->shouldReceive('setUrl')
+             ->once()
+             ->with('https://api.sandbox.orcid.org/oauth/token')
+             ->andReturn(m::self());
 
         // Tell the curl method to return an empty ORCID iD
         $response = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'Fixtures' . DIRECTORY_SEPARATOR . 'response-success.json');
@@ -371,7 +384,9 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
         $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
              ->getMock()
-             ->shouldReceive('setUrl')->once()->with('https://pub.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+             ->shouldReceive('setUrl')
+             ->once()
+             ->with('https://pub.orcid.org/v2.0/0000-0000-0000-0000/record');
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
         $oauth->getProfile('0000-0000-0000-0000');
@@ -387,7 +402,9 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
         $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
              ->getMock()
-             ->shouldReceive('setUrl')->once()->with('https://pub.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+             ->shouldReceive('setUrl')
+             ->once()
+             ->with('https://pub.orcid.org/v2.0/0000-0000-0000-0000/record');
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
         $oauth->usePublicApi()->setOrcid('0000-0000-0000-0000')->getProfile();
@@ -403,7 +420,9 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
         $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
              ->getMock()
-             ->shouldReceive('setUrl')->once()->with('https://api.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+             ->shouldReceive('setUrl')
+             ->once()
+             ->with('https://api.orcid.org/v2.0/0000-0000-0000-0000/record');
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
         $oauth->useMembersApi()
@@ -423,10 +442,12 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
         $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
              ->getMock()
-             ->shouldReceive('setUrl')->once()->with('https://api.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+             ->shouldReceive('setUrl')
+             ->once()
+             ->with('https://api.orcid.org/v2.0/0000-0000-0000-0000/record');
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
-        $oauth->useMembersApi()->getProfile('0000-0000-0000-0000');
+        $oauth->useMembersApi()->getProfile('0000-0000-0000-0000', '2.0');
     }
 
     /**
@@ -439,13 +460,15 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
         $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
              ->getMock()
-             ->shouldReceive('setUrl')->once()->with('https://api.sandbox.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+             ->shouldReceive('setUrl')
+             ->once()
+             ->with('https://api.sandbox.orcid.org/v2.0/0000-0000-0000-0000/record');
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
         $oauth->useMembersApi()
               ->useSandboxEnvironment()
               ->setAccessToken('123456789')
-              ->getProfile('0000-0000-0000-0000');
+              ->getProfile('0000-0000-0000-0000', '2.0');
     }
 
     /**
@@ -458,12 +481,14 @@ class OauthTest extends \PHPUnit_Framework_TestCase
         $http = m::mock('Orcid\Http\Curl');
         $http->shouldReceive('execute', 'setHeader', 'setOpt')->andReturn(m::self())
              ->getMock()
-             ->shouldReceive('setUrl')->once()->with('https://pub.sandbox.orcid.org/v1.2/0000-0000-0000-0000/orcid-profile');
+             ->shouldReceive('setUrl')
+             ->once()
+             ->with('https://pub.sandbox.orcid.org/v2.0/0000-0000-0000-0000/record');
 
         $oauth = m::mock('Orcid\Oauth', [$http])->makePartial();
         $oauth->usePublicApi()
               ->useSandboxEnvironment()
               ->setAccessToken('123456789')
-              ->getProfile('0000-0000-0000-0000');
+              ->getProfile('0000-0000-0000-0000', '2.0');
     }
 }

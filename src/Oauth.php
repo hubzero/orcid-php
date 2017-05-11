@@ -2,6 +2,7 @@
 /**
  * @package   orcid-php
  * @author    Sam Wilson <samwilson@purdue.edu>
+ * @author    Darren Stephens <darren.stephesn@durham.ac.uk>
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
  */
 
@@ -18,9 +19,10 @@ class Oauth
     /**
      * API endpoint constants
      **/
-    const HOSTNAME  = 'orcid.org';
-    const AUTHORIZE = 'oauth/authorize';
-    const TOKEN     = 'oauth/token';
+    const HOSTNAME    = 'orcid.org';
+    const AUTHORIZE   = 'oauth/authorize';
+    const TOKEN       = 'oauth/token';
+    const API_VERSION = '2.0';
 
     /**
      * The http tranport object
@@ -35,6 +37,13 @@ class Oauth
      * @var  string
      **/
     private $level = 'pub';
+
+    /**
+     * The ORCID api version
+     *
+     * @var  string
+     **/
+    private $api_version = '2.0';
 
     /**
      * The ORCID environment type
@@ -475,12 +484,17 @@ class Oauth
      * assuming you use the public API endpoint.
      *
      * @param   string  $orcid  the orcid to look up, if not already set as class prop
+     * @param   string  $api_version the api version to query
      * @return  object
      * @throws  Exception
      **/
-    public function getProfile($orcid = null)
+    public function getProfile($orcid = null, $api_version = '2.0')
     {
-        $this->http->setUrl($this->getApiEndpoint('orcid-profile', $orcid));
+        if ($api_version === '2.0') {
+            $this->http->setUrl($this->getApiEndpoint('record', $api_version, $orcid));
+        } else {
+            $this->http->setUrl($this->getApiEndpoint('orcid-profile', $api_version, $orcid));
+        }
 
         if ($this->level == 'api') {
             // If using the members api, we have to have an access token set
@@ -493,7 +507,7 @@ class Oauth
                 'Authorization' => 'Bearer ' . $this->getAccessToken()
             ]);
         } else {
-            $this->http->setHeader('Accept: application/orcid+json');
+            $this->http->setHeader('Accept: application/vnd.orcid+json');
         }
 
         return json_decode($this->http->execute());
@@ -502,17 +516,23 @@ class Oauth
     /**
      * Creates the qualified api endpoint for retrieving the desired data
      *
-     * @param   string  $endpoint  the shortname of the endpoint
-     * @param   string  $orcid     the orcid to look up, if not already specified
+     * @param   string  $endpoint     the shortname of the endpoint
+     * @param   string  $api_version  the api version to use
+     * @param   string  $orcid        the orcid to look up, if not already specified
      * @return  string
      **/
-    private function getApiEndpoint($endpoint, $orcid = null)
+    public function getApiEndpoint($endpoint, $api_version = "2.0", $orcid = null)
     {
+        $allowed_api_versions = array('1.2', '2.0');
+        if (!in_array($api_version, $allowed_api_versions)) {
+            $version = $this->api_version;
+        }
+
         $url  = 'https://';
         $url .= $this->level . '.';
         $url .= (!empty($this->environment)) ? $this->environment . '.' : '';
         $url .= self::HOSTNAME;
-        $url .= '/v1.2/';
+        $url .= '/v'.$api_version.'/';
         $url .= $orcid ?: $this->getOrcid();
         $url .= '/' . $endpoint;
 

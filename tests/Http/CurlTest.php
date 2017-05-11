@@ -13,7 +13,7 @@ use \Mockery as m;
 /**
  * Base curl functionality tests tests
  */
-class CurlTest extends \PHPUnit_Framework_TestCase
+class CurlTest extends m\Adapter\Phpunit\MockeryTestCase
 {
     /**
      * Intercept a native function call so we can inspect its arguments

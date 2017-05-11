@@ -1,0 +1,942 @@
+{
+    "orcid-identifier": {
+        "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+        "path": "0000-0000-0000-000X",
+        "host": "sandbox.orcid.org"
+    },
+    "preferences": {
+        "locale": "EN"
+    },
+    "history": {
+        "creation-method": "DIRECT",
+        "completion-date": null,
+        "submission-date": {
+            "value": 1466680473620
+        },
+        "last-modified-date": {
+            "value": 1491404809905
+        },
+        "claimed": true,
+        "source": null,
+        "deactivation-date": null,
+        "verified-email": true,
+        "verified-primary-email": true
+    },
+    "person": {
+        "last-modified-date": {
+            "value": 1468570671292
+        },
+        "name": {
+            "created-date": {
+                "value": 1466680473916
+            },
+            "last-modified-date": {
+                "value": 1466691317064
+            },
+            "given-names": {
+                "value": "Darren"
+            },
+            "family-name": {
+                "value": "Stephens"
+            },
+            "credit-name": {
+                "value": "John Smith"
+            },
+            "source": null,
+            "visibility": "PUBLIC",
+            "path": "0000-0000-0000-000X"
+        },
+        "other-names": {
+            "last-modified-date": null,
+            "other-name": [],
+            "path": "/0000-0000-0000-000X/other-names"
+        },
+        "biography": {
+            "created-date": {
+                "value": 1466778064115
+            },
+            "last-modified-date": {
+                "value": 1467290836459
+            },
+            "content": "Here is some placeholder text for the biography field in the ORCID system. It's not very interesting per se, but it does occupy some space in the form, which I suppose is the whole point really.",
+            "visibility": "LIMITED",
+            "path": "/0000-0000-0000-000X/biography"
+        },
+        "researcher-urls": {
+            "last-modified-date": {
+                "value": 1468254718180
+            },
+            "researcher-url": [
+                {
+                    "created-date": {
+                        "value": 1466688998628
+                    },
+                    "last-modified-date": {
+                        "value": 1468254718180
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "url-name": "DU Staff Profile",
+                    "url": {
+                        "value": "https://www.dur.ac.uk/cis/about/person/?id=99999"
+                    },
+                    "visibility": "PUBLIC",
+                    "path": "/0000-0000-0000-000X/researcher-urls/99999",
+                    "put-code": 41249,
+                    "display-index": 4
+                },
+                {
+                    "created-date": {
+                        "value": 1467291110798
+                    },
+                    "last-modified-date": {
+                        "value": 1468254718180
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "url-name": "My domain",
+                    "url": {
+                        "value": "http://www.iamtheboyfromnowhere.com"
+                    },
+                    "visibility": "PUBLIC",
+                    "path": "/0000-0000-0000-000X/researcher-urls/41259",
+                    "put-code": 41259,
+                    "display-index": 3
+                },
+                {
+                    "created-date": {
+                        "value": 1468254718170
+                    },
+                    "last-modified-date": {
+                        "value": 1468254718170
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "url-name": "ResearcherID",
+                    "url": {
+                        "value": "http://www.researcherid.com/rid/K-1078-2016"
+                    },
+                    "visibility": "PUBLIC",
+                    "path": "/0000-0000-0000-000X/researcher-urls/41264",
+                    "put-code": 41264,
+                    "display-index": 2
+                },
+                {
+                    "created-date": {
+                        "value": 1468254718178
+                    },
+                    "last-modified-date": {
+                        "value": 1468254718179
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "url-name": "Twitter",
+                    "url": {
+                        "value": "https://twitter.com/johnsmith"
+                    },
+                    "visibility": "PUBLIC",
+                    "path": "/0000-0000-0000-000X/researcher-urls/41265",
+                    "put-code": 41265,
+                    "display-index": 1
+                }
+            ],
+            "path": "/0000-0000-0000-000X/researcher-urls"
+        },
+        "emails": {
+            "last-modified-date": {
+                "value": 1466759165894
+            },
+            "email": [
+                {
+                    "created-date": {
+                        "value": 1466759141421
+                    },
+                    "last-modified-date": {
+                        "value": 1466759165894
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "email": "john_smith@genericurl.com",
+                    "path": null,
+                    "visibility": "LIMITED",
+                    "verified": true,
+                    "primary": true,
+                    "put-code": null
+                },
+                {
+                    "created-date": {
+                        "value": 1466680473916
+                    },
+                    "last-modified-date": {
+                        "value": 1466680473916
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "email": "john_smith@anothergenericurl.com",
+                    "path": null,
+                    "visibility": "LIMITED",
+                    "verified": false,
+                    "primary": false,
+                    "put-code": null
+                }
+            ],
+            "path": "/0000-0000-0000-000X/email"
+        },
+        "addresses": {
+            "last-modified-date": {
+                "value": 1466688951689
+            },
+            "address": [
+                {
+                    "created-date": {
+                        "value": 1466688951689
+                    },
+                    "last-modified-date": {
+                        "value": 1466688951689
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "country": {
+                        "value": "GB"
+                    },
+                    "visibility": "PUBLIC",
+                    "path": "/0000-0000-0000-000X/address/4478",
+                    "put-code": 4478,
+                    "display-index": 0
+                }
+            ],
+            "path": "/0000-0000-0000-000X/address"
+        },
+        "keywords": {
+            "last-modified-date": {
+                "value": 1468254110827
+            },
+            "keyword": [
+                {
+                    "created-date": {
+                        "value": 1466688953510
+                    },
+                    "last-modified-date": {
+                        "value": 1468254110827
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "content": "some more keywords",
+                    "visibility": "PUBLIC",
+                    "path": "/0000-0000-0000-000X/keywords/4550",
+                    "put-code": 4550,
+                    "display-index": 2
+                },
+                {
+                    "created-date": {
+                        "value": 1468254110820
+                    },
+                    "last-modified-date": {
+                        "value": 1468254110821
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "content": "things, stuff, odds, sods, whatnots",
+                    "visibility": "PUBLIC",
+                    "path": "/0000-0000-0000-000X/keywords/4553",
+                    "put-code": 4553,
+                    "display-index": 1
+                }
+            ],
+            "path": "/0000-0000-0000-000X/keywords"
+        },
+        "external-identifiers": {
+            "last-modified-date": {
+                "value": 1468570671292
+            },
+            "external-identifier": [
+                {
+                    "created-date": {
+                        "value": 1468512826385
+                    },
+                    "last-modified-date": {
+                        "value": 1468570671292
+                    },
+                    "source": {
+                        "source-orcid": null,
+                        "source-client-id": {
+                            "uri": "http://sandbox.orcid.org/client/APP-XFP95F5L7CC6G8ZA",
+                            "path": "APP-XFP95F5L7CC6G8ZA",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-name": {
+                            "value": "ORCID@Durham"
+                        }
+                    },
+                    "external-id-type": "Researcher ID",
+                    "external-id-value": "K-1078-2016",
+                    "external-id-url": {
+                        "value": "http://www.researcherid.com/rid/K-1078-2016"
+                    },
+                    "external-id-relationship": "SELF",
+                    "visibility": "LIMITED",
+                    "path": "/0000-0000-0000-000X/external-identifiers/3240",
+                    "put-code": 3240,
+                    "display-index": 1
+                }
+            ],
+            "path": "/0000-0000-0000-000X/external-identifiers"
+        },
+        "path": "/0000-0000-0000-000X/person"
+    },
+    "activities-summary": {
+        "last-modified-date": {
+            "value": 1486040476396
+        },
+        "educations": {
+            "last-modified-date": {
+                "value": 1473254073152
+            },
+            "education-summary": [
+                {
+                    "created-date": {
+                        "value": 1466689685060
+                    },
+                    "last-modified-date": {
+                        "value": 1473254073152
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "department-name": "Metahphysics and Woodwoork",
+                    "role-title": "BA (Hons)",
+                    "start-date": {
+                        "year": {
+                            "value": "1994"
+                        },
+                        "month": null,
+                        "day": null
+                    },
+                    "end-date": {
+                        "year": {
+                            "value": "1997"
+                        },
+                        "month": null,
+                        "day": null
+                    },
+                    "organization": {
+                        "name": "Durham University",
+                        "address": {
+                            "city": "Durham",
+                            "region": "Durham",
+                            "country": "GB"
+                        },
+                        "disambiguated-organization": {
+                            "disambiguated-organization-identifier": "3057",
+                            "disambiguation-source": "RINGGOLD"
+                        }
+                    },
+                    "visibility": "LIMITED",
+                    "put-code": 20670,
+                    "path": "/0000-0000-0000-000X/education/20670"
+                },
+                {
+                    "created-date": {
+                        "value": 1466689740871
+                    },
+                    "last-modified-date": {
+                        "value": 1467644629119
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "department-name": "School of Applied Things",
+                    "role-title": "MSc",
+                    "start-date": {
+                        "year": {
+                            "value": "1999"
+                        },
+                        "month": null,
+                        "day": null
+                    },
+                    "end-date": {
+                        "year": {
+                            "value": "2000"
+                        },
+                        "month": null,
+                        "day": null
+                    },
+                    "organization": {
+                        "name": "University of Going a Bit Red",
+                        "address": {
+                            "city": "Helsinki",
+                            "region": "Helsinki",
+                            "country": "FI"
+                        },
+                        "disambiguated-organization": {
+                            "disambiguated-organization-identifier": "9999",
+                            "disambiguation-source": "RINGGOLD"
+                        }
+                    },
+                    "visibility": "LIMITED",
+                    "put-code": 20671,
+                    "path": "/0000-0000-0000-000X/education/20671"
+                }
+            ],
+            "path": "/0000-0000-0000-000X/educations"
+        },
+        "employments": {
+            "last-modified-date": {
+                "value": 1472142623255
+            },
+            "employment-summary": [
+                {
+                    "created-date": {
+                        "value": 1466689795054
+                    },
+                    "last-modified-date": {
+                        "value": 1472142623255
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "department-name": "CIS",
+                    "role-title": "Junior Wrangler",
+                    "start-date": {
+                        "year": {
+                            "value": "2009"
+                        },
+                        "month": {
+                            "value": "01"
+                        },
+                        "day": {
+                            "value": "01"
+                        }
+                    },
+                    "end-date": null,
+                    "organization": {
+                        "name": "Durham University",
+                        "address": {
+                            "city": "Durham",
+                            "region": "Durham",
+                            "country": "GB"
+                        },
+                        "disambiguated-organization": {
+                            "disambiguated-organization-identifier": "3057",
+                            "disambiguation-source": "RINGGOLD"
+                        }
+                    },
+                    "visibility": "PUBLIC",
+                    "put-code": 20672,
+                    "path": "/0000-0000-0000-000X/employment/20672"
+                },
+                {
+                    "created-date": {
+                        "value": 1467126905097
+                    },
+                    "last-modified-date": {
+                        "value": 1467126905097
+                    },
+                    "source": {
+                        "source-orcid": {
+                            "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                            "path": "0000-0000-0000-000X",
+                            "host": "sandbox.orcid.org"
+                        },
+                        "source-client-id": null,
+                        "source-name": {
+                            "value": "John Smith"
+                        }
+                    },
+                    "department-name": "Department of Torpidity",
+                    "role-title": "Senior Tutor",
+                    "start-date": {
+                        "year": {
+                            "value": "2001"
+                        },
+                        "month": {
+                            "value": "02"
+                        },
+                        "day": {
+                            "value": "15"
+                        }
+                    },
+                    "end-date": {
+                        "year": {
+                            "value": "2008"
+                        },
+                        "month": {
+                            "value": "12"
+                        },
+                        "day": {
+                            "value": "31"
+                        }
+                    },
+                    "organization": {
+                        "name": "University of Utopia",
+                        "address": {
+                            "city": "Utopia",
+                            "region": "Utopia",
+                            "country": "GB"
+                        },
+                        "disambiguated-organization": {
+                            "disambiguated-organization-identifier": "9998",
+                            "disambiguation-source": "RINGGOLD"
+                        }
+                    },
+                    "visibility": "PUBLIC",
+                    "put-code": 20681,
+                    "path": "/0000-0000-0000-000X/employment/20681"
+                }
+            ],
+            "path": "/0000-0000-0000-000X/employments"
+        },
+        "fundings": {
+            "last-modified-date": {
+                "value": 1468571235699
+            },
+            "group": [
+                {
+                    "last-modified-date": {
+                        "value": 1468571116641
+                    },
+                    "external-ids": {
+                        "external-id": [
+                            {
+                                "external-id-type": "grant_number",
+                                "external-id-value": "10538",
+                                "external-id-url": {
+                                    "value": "http://grant.number/10538"
+                                },
+                                "external-id-relationship": "SELF"
+                            }
+                        ]
+                    },
+                    "funding-summary": [
+                        {
+                            "created-date": {
+                                "value": 1467724912853
+                            },
+                            "last-modified-date": {
+                                "value": 1468571116641
+                            },
+                            "source": {
+                                "source-orcid": {
+                                    "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                                    "path": "0000-0000-0000-000X",
+                                    "host": "sandbox.orcid.org"
+                                },
+                                "source-client-id": null,
+                                "source-name": {
+                                    "value": "John Smith"
+                                }
+                            },
+                            "title": {
+                                "title": {
+                                    "value": "Gluteal Location Utilising Bilateral Manual Dexterity "
+                                },
+                                "translated-title": null
+                            },
+                            "external-ids": {
+                                "external-id": [
+                                    {
+                                        "external-id-type": "grant_number",
+                                        "external-id-value": "10538",
+                                        "external-id-url": {
+                                            "value": "http://grant.number/10538"
+                                        },
+                                        "external-id-relationship": "SELF"
+                                    }
+                                ]
+                            },
+                            "type": "GRANT",
+                            "start-date": {
+                                "year": {
+                                    "value": "2016"
+                                },
+                                "month": {
+                                    "value": "08"
+                                },
+                                "day": null
+                            },
+                            "end-date": {
+                                "year": {
+                                    "value": "2020"
+                                },
+                                "month": {
+                                    "value": "06"
+                                },
+                                "day": null
+                            },
+                            "organization": {
+                                "name": "Department for International Development, UK Government",
+                                "address": {
+                                    "city": "London",
+                                    "region": null,
+                                    "country": "GB"
+                                },
+                                "disambiguated-organization": {
+                                    "disambiguated-organization-identifier": "http://dx.doi.org/10.13039/501100002992",
+                                    "disambiguation-source": "FUNDREF"
+                                }
+                            },
+                            "visibility": "PUBLIC",
+                            "put-code": 3724,
+                            "path": "/0000-0000-0000-000X/funding/3724",
+                            "display-index": "1"
+                        }
+                    ]
+                },
+                {
+                    "last-modified-date": {
+                        "value": 1468571235699
+                    },
+                    "external-ids": {
+                        "external-id": [
+                            {
+                                "external-id-type": "grant_number",
+                                "external-id-value": "666",
+                                "external-id-url": null,
+                                "external-id-relationship": "SELF"
+                            }
+                        ]
+                    },
+                    "funding-summary": [
+                        {
+                            "created-date": {
+                                "value": 1467126737470
+                            },
+                            "last-modified-date": {
+                                "value": 1468571235699
+                            },
+                            "source": {
+                                "source-orcid": {
+                                    "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                                    "path": "0000-0000-0000-000X",
+                                    "host": "sandbox.orcid.org"
+                                },
+                                "source-client-id": null,
+                                "source-name": {
+                                    "value": "John Smith"
+                                }
+                            },
+                            "title": {
+                                "title": {
+                                    "value": "The effect of Brexit on the world market price of ocarinas"
+                                },
+                                "translated-title": null
+                            },
+                            "external-ids": {
+                                "external-id": [
+                                    {
+                                        "external-id-type": "grant_number",
+                                        "external-id-value": "666",
+                                        "external-id-url": null,
+                                        "external-id-relationship": "SELF"
+                                    }
+                                ]
+                            },
+                            "type": "AWARD",
+                            "start-date": {
+                                "year": {
+                                    "value": "2016"
+                                },
+                                "month": {
+                                    "value": "06"
+                                },
+                                "day": null
+                            },
+                            "end-date": {
+                                "year": {
+                                    "value": "2017"
+                                },
+                                "month": {
+                                    "value": "06"
+                                },
+                                "day": null
+                            },
+                            "organization": {
+                                "name": "European Commission Directorate-General for Research and Innovation",
+                                "address": {
+                                    "city": "Brussels",
+                                    "region": "Wallonia",
+                                    "country": "BE"
+                                },
+                                "disambiguated-organization": {
+                                    "disambiguated-organization-identifier": "http://dx.doi.org/10.13039/100004431",
+                                    "disambiguation-source": "FUNDREF"
+                                }
+                            },
+                            "visibility": "PUBLIC",
+                            "put-code": 3722,
+                            "path": "/0000-0000-0000-000X/funding/3722",
+                            "display-index": "0"
+                        }
+                    ]
+                }
+            ],
+            "path": "/0000-0000-0000-000X/fundings"
+        },
+        "peer-reviews": {
+            "last-modified-date": null,
+            "group": [],
+            "path": "/0000-0000-0000-000X/peer-reviews"
+        },
+        "works": {
+            "last-modified-date": {
+                "value": 1486040476396
+            },
+            "group": [
+                {
+                    "last-modified-date": {
+                        "value": 1486040476396
+                    },
+                    "external-ids": {
+                        "external-id": [
+                            {
+                                "external-id-type": "issn",
+                                "external-id-value": "2496-1868",
+                                "external-id-url": null,
+                                "external-id-relationship": "SELF"
+                            }
+                        ]
+                    },
+                    "work-summary": [
+                        {
+                            "put-code": 753983,
+                            "created-date": {
+                                "value": 1486040462737
+                            },
+                            "last-modified-date": {
+                                "value": 1486040476396
+                            },
+                            "source": {
+                                "source-orcid": {
+                                    "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                                    "path": "0000-0000-0000-000X",
+                                    "host": "sandbox.orcid.org"
+                                },
+                                "source-client-id": null,
+                                "source-name": {
+                                    "value": "John Smith"
+                                }
+                            },
+                            "title": {
+                                "title": {
+                                    "value": "The Price of Eggs"
+                                },
+                                "subtitle": null,
+                                "translated-title": null
+                            },
+                            "external-ids": {
+                                "external-id": [
+                                    {
+                                        "external-id-type": "issn",
+                                        "external-id-value": "2496-1868",
+                                        "external-id-url": null,
+                                        "external-id-relationship": "SELF"
+                                    }
+                                ]
+                            },
+                            "type": "JOURNAL_ARTICLE",
+                            "publication-date": {
+                                "year": {
+                                    "value": "2017"
+                                },
+                                "month": {
+                                    "value": "01"
+                                },
+                                "day": {
+                                    "value": "01"
+                                },
+                                "media-type": null
+                            },
+                            "visibility": "LIMITED",
+                            "path": "/0000-0000-0000-000X/work/753983",
+                            "display-index": "1"
+                        }
+                    ]
+                },
+                {
+                    "last-modified-date": {
+                        "value": 1468512826413
+                    },
+                    "external-ids": {
+                        "external-id": [
+                            {
+                                "external-id-type": "doi",
+                                "external-id-value": "10.1109/WSE.2002.1134096",
+                                "external-id-url": null,
+                                "external-id-relationship": "SELF"
+                            }
+                        ]
+                    },
+                    "work-summary": [
+                        {
+                            "put-code": 662044,
+                            "created-date": {
+                                "value": 1467217974815
+                            },
+                            "last-modified-date": {
+                                "value": 1468512826413
+                            },
+                            "source": {
+                                "source-orcid": {
+                                    "uri": "http://sandbox.orcid.org/0000-0000-0000-000X",
+                                    "path": "0000-0000-0000-000X",
+                                    "host": "sandbox.orcid.org"
+                                },
+                                "source-client-id": null,
+                                "source-name": {
+                                    "value": "John Smith"
+                                }
+                            },
+                            "title": {
+                                "title": {
+                                    "value": "Grass Is Green. Or Is It?"
+                                },
+                                "subtitle": null,
+                                "translated-title": null
+                            },
+                            "external-ids": {
+                                "external-id": [
+                                    {
+                                        "external-id-type": "doi",
+                                        "external-id-value": "10.0000/EGG.2002.1134096",
+                                        "external-id-url": null,
+                                        "external-id-relationship": "SELF"
+                                    },
+                                    {
+                                        "external-id-type": "isbn",
+                                        "external-id-value": "0-7695-1804-4",
+                                        "external-id-url": null,
+                                        "external-id-relationship": "PART_OF"
+                                    }
+                                ]
+                            },
+                            "type": "CONFERENCE_PAPER",
+                            "publication-date": {
+                                "year": {
+                                    "value": "2002"
+                                },
+                                "month": {
+                                    "value": "10"
+                                },
+                                "day": {
+                                    "value": "02"
+                                },
+                                "media-type": null
+                            },
+                            "visibility": "PUBLIC",
+                            "path": "/0000-0000-0000-000X/work/662044",
+                            "display-index": "0"
+                        }
+                    ]
+                }
+            ],
+            "path": "/0000-0000-0000-000X/works"
+        },
+        "path": "/0000-0000-0000-000X/activities"
+    },
+    "path": "/0000-0000-0000-000X"
+}

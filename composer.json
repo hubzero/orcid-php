@@ -1,16 +1,16 @@
 {
-    "name": "hubzero/orcid-php",
-    "description": "Library for ORCID web services",
+    "name": "illuminatusds/orcid-php",
+    "description": "Library for ORCID API 1.2/2.0 web services",
     "keywords": ["orcid", "php", "oauth"],
     "license": "MIT",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.9",
         "ext-curl": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.*",
         "satooshi/php-coveralls": "1.0.*",
-        "mockery/mockery": "dev-master"
+        "mockery/mockery": "0.9.*"
     },
     "autoload": {
         "psr-4": {
