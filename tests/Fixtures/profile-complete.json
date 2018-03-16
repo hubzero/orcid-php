@@ -1,19 +1,18 @@
 {
-    "message-version" : "1.2",
-    "orcid-profile" : {
+    "message-version" : "2.0",
+    "record" : {
         "orcid" : null,
         "orcid-id" : null,
         "orcid-identifier" : {
-            "value" : null,
             "uri" : "http://orcid.org/0000-0000-0000-0000",
             "path" : "0000-0000-0000-0000",
             "host" : "orcid.org"
         },
         "orcid-deprecated" : null,
-        "orcid-preferences" : {
+        "preferences" : {
             "locale" : "EN"
         },
-        "orcid-history" : {
+        "history" : {
             "creation-method" : "DIRECT",
             "completion-date" : null,
             "submission-date" : {
@@ -27,37 +26,52 @@
             },
             "source" : null,
             "deactivation-date" : null,
-            "verified-email" : {
-                "value" : true
-            },
-            "verified-primary-email" : {
-                "value" : true
-            },
-            "visibility" : null
+            "verified-email" : true,
+            "verified-primary-email" : true
         },
-        "orcid-bio" : {
-            "personal-details" : {
+        "person" : {
+            "last-modified-date": 1442425371236,
+            "name" : {
+                "last-modified-date": {
+                    "value": 1442425371236
+                },
                 "given-names" : {
                     "value" : "Test"
                 },
                 "family-name" : {
                     "value" : "User"
                 },
-                "credit-name" : null,
-                "other-names" : {
-                    "other-name" : [ ],
-                    "visibility" : "PUBLIC"
-                }
+                "credit-name" : {
+                    "value" : "Test User"
+                },
+                "source": null,
+                "visibility" : "PUBLIC",
+                "path": "0000-0000-0000-0000"
+            },
+            "other-names" : {
+                "last-modified-date": {
+                    "value": 1442425371236
+                },
+                "other-name" : [ ],
+                "path": "/0000-0000-0000-0000/other-names"
             },
             "biography" : {
-                "value" : "",
-                "visibility" : "PUBLIC"
+                "last-modified-date": {
+                    "value": 1442425371236
+                },
+                "content" : "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas faucibus mollis interdum.",
+                "visibility" : "PUBLIC",
+                "path": "/0000-0000-0000-0000/biography"
             },
             "researcher-urls" : {
+                "last-modified-date": null,
                 "researcher-url" : [ ],
-                "visibility" : "PUBLIC"
+                "path": "/0000-0000-0000-0000/researcher-urls"
             },
-            "contact-details" : {
+            "emails": {
+                "last-modified-date": {
+                    "value": 1442425371236
+                },
                 "email" : [ {
                     "value" : "testuser@gmail.com",
                     "primary" : true,
@@ -67,18 +81,26 @@
                     "source" : "0000-0000-0000-0000",
                     "source-client-id" : null
                 } ],
-                "address" : null
+                "path": "/0000-0000-0000-0000/emails"
+            },
+            "addresses": {
+                "last-modified-date": null,
+                "address" : [ ],
+                "path": "/0000-0000-0000-0000/addresses"
             },
             "keywords" : null,
             "external-identifiers" : {
+                "last-modified-date": null,
                 "external-identifier" : [ ],
-                "visibility" : "PUBLIC"
+                "visibility" : "PUBLIC",
+                "path": "/0000-0000-0000-0000/external-identifiers"
             },
             "delegation" : null,
             "applications" : null,
-            "scope" : null
+            "scope" : null,
+            "path": "/0000-0000-0000-0000/person"
         },
-        "orcid-activities" : {
+        "activities-summary" : {
             "affiliations" : {
                 "affiliation" : [ {
                     "type" : "EMPLOYMENT",
@@ -139,7 +161,8 @@
         "orcid-internal" : null,
         "type" : "USER",
         "group-type" : null,
-        "client-type" : null
+        "client-type" : null,
+        "path": "/0000-0000-0000-0000/activities"
     },
     "orcid-search-results" : null,
     "error-desc" : null
