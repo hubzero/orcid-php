@@ -76,7 +76,7 @@ $email = $orcid->email();
 $name  = $orcid->fullName();
 ```
 
-The profile class currently only supports a limited number of helper methods for directly accessing elements from the profile data. This will be expanded upon as needed. The raw JSON data from the profile output is available by calling the raw() method.
+The profile class currently only supports a limited number of helper methods for directly accessing elements from the profile data. This will be expanded upon as needed. The raw JSON data from the profile output is available by calling the `raw()` method.
 
 Note that some fields (like email) may return null if the user has not made that field available.
 

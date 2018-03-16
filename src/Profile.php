@@ -55,22 +55,22 @@ class Profile
     public function raw()
     {
         if (!isset($this->raw)) {
-            $this->raw = $this->oauth->getProfile()->{'orcid-profile'};
+            $this->raw = $this->oauth->getProfile($this->id());
         }
 
         return $this->raw;
     }
 
     /**
-     * Grabs the ORCID bio
+     * Grabs the ORCID person
      *
      * @return  object
      **/
-    public function bio()
+    public function person()
     {
         $this->raw();
 
-        return $this->raw->{'orcid-bio'};
+        return $this->raw->person;
     }
 
     /**
@@ -83,12 +83,12 @@ class Profile
         $this->raw();
 
         $email = null;
-        $bio   = $this->bio();
+        $person = $this->person();
 
-        if (isset($bio->{'contact-details'})) {
-            if (isset($bio->{'contact-details'}->email)) {
-                if (is_array($bio->{'contact-details'}->email) && isset($bio->{'contact-details'}->email[0])) {
-                    $email = $bio->{'contact-details'}->email[0]->value;
+        if (isset($person->emails)) {
+            if (isset($person->emails->email)) {
+                if (is_array($person->emails->email) && isset($person->emails->email[0])) {
+                    $email = $person->emails->email[0]->value;
                 }
             }
         }
@@ -104,7 +104,7 @@ class Profile
     public function fullName()
     {
         $this->raw();
-        $details = $this->bio()->{'personal-details'};
+        $details = $this->person()->name;
 
         return $details->{'given-names'}->value . ' ' . $details->{'family-name'}->value;
     }

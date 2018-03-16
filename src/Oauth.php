@@ -21,6 +21,7 @@ class Oauth
     const HOSTNAME  = 'orcid.org';
     const AUTHORIZE = 'oauth/authorize';
     const TOKEN     = 'oauth/token';
+    const VERSION   = '2.0';
 
     /**
      * The http tranport object
@@ -480,7 +481,7 @@ class Oauth
      **/
     public function getProfile($orcid = null)
     {
-        $this->http->setUrl($this->getApiEndpoint('orcid-profile', $orcid));
+        $this->http->setUrl($this->getApiEndpoint('record', $orcid));
 
         if ($this->level == 'api') {
             // If using the members api, we have to have an access token set
@@ -493,7 +494,7 @@ class Oauth
                 'Authorization' => 'Bearer ' . $this->getAccessToken()
             ]);
         } else {
-            $this->http->setHeader('Accept: application/orcid+json');
+            $this->http->setHeader('Accept: application/vnd.orcid+json');
         }
 
         return json_decode($this->http->execute());
@@ -512,7 +513,7 @@ class Oauth
         $url .= $this->level . '.';
         $url .= (!empty($this->environment)) ? $this->environment . '.' : '';
         $url .= self::HOSTNAME;
-        $url .= '/v1.2/';
+        $url .= '/v' . self::VERSION . '/';
         $url .= $orcid ?: $this->getOrcid();
         $url .= '/' . $endpoint;
 
