@@ -80,7 +80,7 @@ class ProfileTest extends \PHPUnit_Framework_TestCase
     {
         $contents = json_decode(file_get_contents($this->complete));
 
-        $this->assertEquals($contents->record, $this->profile()->raw(), 'Failed to fetch raw profile data');
+        $this->assertEquals($contents, $this->profile()->raw(), 'Failed to fetch raw profile data');
     }
 
     /**
@@ -92,7 +92,7 @@ class ProfileTest extends \PHPUnit_Framework_TestCase
     {
         $contents = json_decode(file_get_contents($this->complete));
 
-        $this->assertEquals($contents->record->person, $this->profile()->person(), 'Failed to fetch bio from profile data');
+        $this->assertEquals($contents->person, $this->profile()->person(), 'Failed to fetch bio from profile data');
     }
 
     /**
