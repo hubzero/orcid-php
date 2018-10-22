@@ -106,6 +106,9 @@ class Profile
         $this->raw();
         $details = $this->person()->name;
 
-        return $details->{'given-names'}->value . ' ' . $details->{'family-name'}->value;
+        // "given-names" is a required field on ORCID profiles.
+        // "family-name", however, may or may not be available.
+        // https://members.orcid.org/api/tutorial/reading-xml#names
+        return $details->{'given-names'}->value . ($details->{'family-name'} ? ' ' . $details->{'family-name'}->value : '');
     }
 }
