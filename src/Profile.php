@@ -74,7 +74,7 @@ class Profile
     }
 
     /**
-     * Grabs the users email if it's set and available
+     * Grabs the user's primary email if it's set and available
      *
      * @return  string|null
      **/
@@ -88,7 +88,13 @@ class Profile
         if (isset($person->emails)) {
             if (isset($person->emails->email)) {
                 if (is_array($person->emails->email) && isset($person->emails->email[0])) {
-                    $email = $person->emails->email[0]->value;
+                    $email = $person->emails->email[0]->email;
+
+                    foreach($person->emails->email as $em) {
+                        if ($em->primary) {
+                            $email = $em->email;
+                        }
+                    }
                 }
             }
         }
@@ -109,6 +115,26 @@ class Profile
         // "given-names" is a required field on ORCID profiles.
         // "family-name", however, may or may not be available.
         // https://members.orcid.org/api/tutorial/reading-xml#names
-        return $details->{'given-names'}->value . ($details->{'family-name'} ? ' ' . $details->{'family-name'}->value : '');
+
+
+	if ( isset($details->{'given-names'}) || isset($details->{'family-name'}) )
+	{
+		
+		if ( isset($details->{'given-names'}) )
+		{
+			$fullname = $details->{'given-names'}->value;
+		}
+
+		if ( isset($details->{'family-name'}) )
+		{
+			$fullname .= ' ' . $details->{'family-name'}->value;
+		}
+
+		$fullname = trim($fullname);
+
+		return $fullname;
+	}
+
+	return null;
     }
 }
