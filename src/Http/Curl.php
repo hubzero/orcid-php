@@ -38,6 +38,7 @@ class Curl
     {
         $this->resource = curl_init();
         $this->setReturnTransfer();
+        $this->setOpt(CURLOPT_FOLLOWLOCATION, 1);
 
         return $this;
     }
